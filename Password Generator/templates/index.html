@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #0808de;
+        }
+        .container {
+            text-align: center;
+            background: #eddbdb01;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(63, 151, 12, 0.1);
+            max-width: 400px;
+        }
+        h1 {
+            color: #c51515;
+        }
+        form {
+            margin-top: 20px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #0f9f29;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #bb0f4b;
+            color: rgb(227, 22, 22);
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #1486c0;
+        }
+        .password-output {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 18px;
+            color: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Password Generator</h1>
+        <form method="post" action="/generate">
+            <label for="length">Password Length:</label>
+            <input type="number" id="length" name="length" min="4" max="64" required>
+            <div>
+                <input type="checkbox" id="uppercase" name="uppercase">
+                <label for="uppercase">Include Uppercase Letters</label>
+            </div>
+            <div>
+                <input type="checkbox" id="numbers" name="numbers">
+                <label for="numbers">Include Numbers</label>
+            </div>
+            <div>
+                <input type="checkbox" id="special" name="special">
+                <label for="special">Include Special Characters</label>
+            </div>
+            <button type="submit">Generate Password</button>
+        </form>
+        {% if password %}
+        <div class="password-output">
+            Generated Password: {{ password }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
